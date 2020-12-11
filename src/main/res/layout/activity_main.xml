@@ -32,6 +32,15 @@
         android:textColor="#fff"
         android:text="Choose" />
 
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/desImage"
+        android:hint="Description"
+        />
+
+
     <Button
         android:id="@+id/btnUpload"
         android:layout_width="match_parent"
@@ -42,6 +51,7 @@
         android:textColor="#fff" />
 
     <Button
+        android:layout_gravity="bottom"
         android:id="@+id/btnViewImage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -49,6 +59,8 @@
         android:background="#2d63ea"
         android:text="View Ảnh"
         android:textColor="#fff" />
+
+
 
 
 </LinearLayout>

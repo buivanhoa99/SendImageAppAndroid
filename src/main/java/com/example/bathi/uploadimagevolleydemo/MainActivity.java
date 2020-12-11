@@ -15,6 +15,7 @@ import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -38,16 +39,17 @@ public class MainActivity extends AppCompatActivity {
     TextView txtUser;
     Button btnChoose, btnUpload,btnViewImage;
     ImageView imageUpload;
+    EditText desText;
     final int CODE_GALLERY_REQUEST = 999;
     Bitmap bitmap;
-    static String urlUpload = "http:/buivanhoa.tk/";
+    static String urlUpload = Configuration.url;
     static String urlLogin = urlUpload+"api/login";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
+        desText = findViewById(R.id.desImage);
         btnChoose = (Button) findViewById(R.id.btnChoose);
         btnUpload = (Button) findViewById(R.id.btnUpload);
         btnViewImage = findViewById(R.id.btnViewImage);
@@ -101,7 +103,9 @@ public class MainActivity extends AppCompatActivity {
 
                         String imageData = imageToString(bitmap);
                         params.put("image", imageData);
-                        params.put("userName",userName);
+                        params.put("user",userName);
+                        params.put("des",desText.getText().toString());
+
                         return params;
                     }
                 };

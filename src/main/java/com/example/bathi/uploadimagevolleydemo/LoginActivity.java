@@ -40,20 +40,6 @@ public class LoginActivity extends AppCompatActivity {
                 String pass = passWord.getText().toString();
 
                 CheckLogin(user, pass);
-                /*
-                Log.d("KT=",LoginActivity.kt+"");
-                if (LoginActivity.kt==1){
-                    Toast.makeText(getApplicationContext(),"2131232131231",Toast.LENGTH_LONG).show();
-                    Intent intent = new Intent(LoginActivity.this,MainActivity.class);
-                    intent.putExtra("userName",user);
-                    intent.putExtra("passWord",pass);
-                    //startActivity(intent);
-                }
-                else {
-                    Toast.makeText(getApplicationContext(),"Tài khoản hoặc mật khẩu chưa đúng",Toast.LENGTH_LONG).show();
-                }
-                */
-
 
             }
         });
