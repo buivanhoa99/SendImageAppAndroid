@@ -113,8 +113,7 @@ public class ViewImageActivity extends AppCompatActivity {
                                             jo = ja.getJSONObject(i);
                                             Images.add(jo.getString("name"));
                                             MyImages.add(new MyImage(Configuration.urlImage+jo.getString("name"),
-                                                    jo.getString("user"),jo.getString("time"),"description"));
-
+                                                    jo.getString("user"),jo.getString("time"),jo.getString("des")));
 
                                         } catch (JSONException e) {
                                             e.printStackTrace();
