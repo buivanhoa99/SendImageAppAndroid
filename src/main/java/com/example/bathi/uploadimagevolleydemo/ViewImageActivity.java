@@ -38,7 +38,6 @@ public class ViewImageActivity extends AppCompatActivity {
     List<MyImage> MyImages;
     String user;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,7 +69,6 @@ public class ViewImageActivity extends AppCompatActivity {
                 }
                 arrayAdapter= new ArrayAdapter<>(ViewImageActivity.this, android.R.layout.simple_spinner_item,Users);
                 for (String x: Users)
-                    Log.d("user111",x);
                 arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 spinner.setAdapter(arrayAdapter);
 
@@ -102,12 +100,10 @@ public class ViewImageActivity extends AppCompatActivity {
                         new Response.Listener<String>() {
                             @Override
                             public void onResponse(String response) {
-                                Log.d("abcd999",response);
                                 try {
                                     ja = new JSONArray(response);
                                     Images.clear();
                                     MyImages.clear();
-                                    Log.d("aaaaa",ja.length()+"");
                                     for (int i=0;i<ja.length();i++){
                                         try {
                                             jo = ja.getJSONObject(i);
@@ -119,7 +115,6 @@ public class ViewImageActivity extends AppCompatActivity {
                                             e.printStackTrace();
                                         }
                                     }
-                                    Log.d("size99999999",Images.size()+"&&"+MyImages.size());
                                     for (int i=0;i<Images.size();i++){
                                         Images.set(i,Configuration.urlImage+Images.get(i));
                                     }
@@ -154,7 +149,6 @@ public class ViewImageActivity extends AppCompatActivity {
                 intent.putExtra("user",MyImages.get(i).getUser());
                 intent.putExtra("time",MyImages.get(i).getTime());
                 intent.putExtra("description",MyImages.get(i).getDescription());
-                Log.d("99999",MyImages.get(i).getLink());
                 startActivity(intent);
             }
         });

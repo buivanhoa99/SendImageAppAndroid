@@ -1,14 +1,24 @@
 package com.example.bathi.uploadimagevolleydemo;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.net.Uri;
+import android.os.Environment;
 import android.os.strictmode.IntentReceiverLeakedViolation;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.ContextMenu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,18 +30,26 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
 import java.util.HashMap;
 import java.util.Map;
 
 public class LoginActivity extends AppCompatActivity {
+    EditText userName,passWord;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        final EditText userName = findViewById(R.id.input_username);
-        final EditText passWord = findViewById(R.id.input_password);
-        Button btnLogin = findViewById(R.id.btn_login);
-        Toast.makeText(LoginActivity.this,"Text",Toast.LENGTH_LONG).show();
+        userName = findViewById(R.id.input_username);
+        passWord = findViewById(R.id.input_password);
+
+        ImageButton btnLogin = findViewById(R.id.btn_login);
+
+
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -41,9 +59,12 @@ public class LoginActivity extends AppCompatActivity {
 
                 CheckLogin(user, pass);
 
+
             }
         });
     }
+
+
 
     private void CheckLogin(String user, String pass) {
         final String userName = user;

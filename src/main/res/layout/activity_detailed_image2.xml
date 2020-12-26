@@ -11,88 +11,96 @@ tools:context=".DetailedImageActivity"
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
-        android:layout_height="400dp"
+        android:layout_height="wrap_content"
+        android:maxHeight="300dp"
+        android:maxWidth="300dp"
         android:baselineAligned="false"
         android:src="@drawable/icon" />
-
-    <LinearLayout
+    <ListView
+        android:layout_margin="30dp"
+        android:layout_marginTop="50dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="10dp"
-        >
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="User:"
-            android:textSize="30sp"
-            android:layout_marginLeft="10dp"
-            />
+        android:id="@+id/listDetailed"/>
 
-        <TextView
-            android:id="@+id/user"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:gravity="left"
-            android:textSize="30sp"
-            android:textStyle="bold"
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="horizontal"-->
+<!--        android:layout_marginTop="15dp"-->
+<!--        >-->
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="User:"-->
+<!--            android:textSize="30sp"-->
+<!--            android:layout_marginLeft="5dp"-->
+<!--            />-->
 
-            />
+<!--        <TextView-->
+<!--            android:id="@+id/user"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginLeft="10dp"-->
+<!--            android:gravity="left"-->
+<!--            android:textSize="30sp"-->
+<!--            android:textStyle="bold"-->
 
-    </LinearLayout>
+<!--            />-->
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="5dp"
-        >
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Time:"
-            android:textSize="30sp"
-            android:layout_marginLeft="10dp"
-            />
+<!--    </LinearLayout>-->
 
-        <TextView
-            android:id="@+id/time"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:gravity="left"
-            android:textSize="30sp"
-            android:textStyle="bold"
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="horizontal"-->
+<!--        android:layout_marginTop="5dp"-->
+<!--        >-->
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Time:"-->
+<!--            android:textSize="30sp"-->
+<!--            android:layout_marginLeft="10dp"-->
+<!--            />-->
 
-            />
-    </LinearLayout>
+<!--        <TextView-->
+<!--            android:id="@+id/time"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginLeft="10dp"-->
+<!--            android:gravity="left"-->
+<!--            android:textSize="30sp"-->
+<!--            android:textStyle="bold"-->
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="5dp"
-            >
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="  Des:"
-                android:textSize="30sp"
-                android:layout_marginLeft="10dp"
-                />
+<!--            />-->
+<!--    </LinearLayout>-->
 
-            <TextView
-                android:id="@+id/description"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:gravity="left"
-                android:textSize="30sp"
-                android:textStyle="bold"
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="horizontal"-->
+<!--            android:layout_marginTop="5dp"-->
+<!--            >-->
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="  Des:"-->
+<!--                android:textSize="30sp"-->
+<!--                android:layout_marginLeft="5dp"-->
+<!--                />-->
 
-                />
+<!--            <TextView-->
+<!--                android:id="@+id/description"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginLeft="5dp"-->
+<!--                android:gravity="left"-->
+<!--                android:textSize="30sp"-->
+<!--                android:textStyle="bold"-->
 
-        </LinearLayout>
+<!--                />-->
+
+<!--        </LinearLayout>-->
 </LinearLayout>
 

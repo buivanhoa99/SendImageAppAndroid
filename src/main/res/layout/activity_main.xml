@@ -22,43 +22,43 @@
         android:baselineAligned="false"
         android:src="@drawable/icon" />
 
-    <Button
-        android:id="@+id/btnChoose"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:baselineAligned="false"
-        android:background="#2d63ea"
-        android:textColor="#fff"
-        android:text="Choose" />
+        android:layout_height="110dp">
+        <ImageButton
+            android:id="@+id/btnChoose"
+            android:layout_width="110dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_add_circle_outline_24px" />
 
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/desImage"
-        android:hint="Description"
-        />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/desImage"
+            android:hint="Description"
+            />
 
 
-    <Button
+    </LinearLayout>
+
+
+
+    <ImageButton
         android:id="@+id/btnUpload"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:background="#2d63ea"
-        android:text="Upload"
+        android:layout_width="95dp"
+        android:layout_height="62dp"
+        android:layout_gravity="center"
+        android:src="@drawable/ic_publish_24px"
         android:textColor="#fff" />
 
-    <Button
-        android:layout_gravity="bottom"
+    <ImageButton
         android:id="@+id/btnViewImage"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:background="#2d63ea"
-        android:text="View Ảnh"
-        android:textColor="#fff" />
+        android:layout_width="200dp"
+        android:layout_height="77dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/ic_collections_24px" />
 
 
 

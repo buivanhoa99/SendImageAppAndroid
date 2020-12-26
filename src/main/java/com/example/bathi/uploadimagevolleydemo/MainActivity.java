@@ -1,11 +1,14 @@
 package com.example.bathi.uploadimagevolleydemo;
 
 import android.Manifest;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
@@ -16,7 +19,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,23 +42,36 @@ import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
     TextView txtUser;
-    Button btnChoose, btnUpload,btnViewImage;
+    ImageButton  btnUpload,btnViewImage;
+    ImageButton btnChoose;
     ImageView imageUpload;
     EditText desText;
     final int CODE_GALLERY_REQUEST = 999;
     Bitmap bitmap;
     static String urlUpload = Configuration.url;
     static String urlLogin = urlUpload+"api/login";
+    ProgressDialog progressDialog;
+    Handler handler;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         desText = findViewById(R.id.desImage);
-        btnChoose = (Button) findViewById(R.id.btnChoose);
-        btnUpload = (Button) findViewById(R.id.btnUpload);
+        btnChoose = (ImageButton) findViewById(R.id.btnChoose);
+        btnUpload = (ImageButton) findViewById(R.id.btnUpload);
         btnViewImage = findViewById(R.id.btnViewImage);
         imageUpload = (ImageView) findViewById(R.id.imageUpload);
+
+        progressDialog = new ProgressDialog(MainActivity.this);
+        progressDialog.setMax(100);
+        progressDialog.setMessage("Uploading...");
+        progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+        handler = new Handler();
+
+
+
+
 
         btnViewImage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,11 +103,43 @@ public class MainActivity extends AppCompatActivity {
         btnUpload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                StringRequest stringRequest = new StringRequest(Request.Method.POST, MainActivity.urlUpload, new Response.Listener<String>() {
+                progressDialog.show();
+
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            while (progressDialog.getProgress() <= progressDialog
+                                    .getMax()) {
+                                Thread.sleep(100);
+//                        handle.sendMessage(handle.obtainMessage());
+                                handler.post(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        if (progressDialog.getProgress()>=99) return;
+                                        progressDialog.incrementProgressBy(1);
+                                    }
+                                });
+                                if (progressDialog.getProgress() == progressDialog
+                                        .getMax()) {
+                                    progressDialog.dismiss();
+                                }
+                            }
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                }).start();
+
+                StringRequest stringRequest = new StringRequest(Request.Method.POST, Configuration.url, new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         Toast.makeText(getApplicationContext(), response, Toast.LENGTH_LONG).show();
-
+                        //
+                        progressDialog.setProgress(progressDialog.getMax());
+                        imageUpload.setImageResource(R.drawable.icon);
+                        desText.setText("");
                     }
                 }, new Response.ErrorListener() {
                     @Override
@@ -112,6 +162,8 @@ public class MainActivity extends AppCompatActivity {
 
                 RequestQueue requestQueue = Volley.newRequestQueue(MainActivity.this);
                 requestQueue.add(stringRequest);
+
+
             }
         });
     }
